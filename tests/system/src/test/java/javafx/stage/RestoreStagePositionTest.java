@@ -118,7 +118,9 @@ public class RestoreStagePositionTest {
         stage.xProperty().removeListener(listenerY);
 
         Assert.assertEquals("Window was moved", x, stage.getX(), 0.1);
+        System.out.println("ruiamzn test. testUfullscreenPosition. Window was moved - 1");
         Assert.assertEquals("Window was moved", y, stage.getY(), 0.1);
+        System.out.println("ruiamzn test. testUfullscreenPosition. Window was moved - 2");
     }
 
     @Test

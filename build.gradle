@@ -351,7 +351,7 @@ defineProperty("BUILD_SRC_ZIP", "false")
 ext.IS_BUILD_SRC_ZIP = Boolean.parseBoolean(BUILD_SRC_ZIP)
 
 // Specifies whether to run full tests (true) or smoke tests (false)
-defineProperty("FULL_TEST", "false")
+defineProperty("FULL_TEST", "true")
 ext.IS_FULL_TEST = Boolean.parseBoolean(FULL_TEST);
 
 // Specifies whether to run robot-based visual tests (only used when FULL_TEST is also enabled)
@@ -359,7 +359,7 @@ defineProperty("USE_ROBOT", "false")
 ext.IS_USE_ROBOT = Boolean.parseBoolean(USE_ROBOT);
 
 // Specified whether to run tests in headless mode
-defineProperty("HEADLESS_TEST", "false")
+defineProperty("HEADLESS_TEST", "true")
 ext.IS_HEADLESS_TEST = Boolean.parseBoolean(HEADLESS_TEST);
 
 // Specifies whether to run system tests that depend on AWT (only used when FULL_TEST is also enabled)
@@ -458,7 +458,7 @@ if (hasProperty("CROSS_TOOLS_DIR")) {
 ext.CROSS_TOOLS_DIR = file(crossToolsDir)
 
 // Specifies whether to run tests with the present jfxrt.jar instead of compiling the new one
-defineProperty("BUILD_SDK_FOR_TEST", "true")
+defineProperty("BUILD_SDK_FOR_TEST", "false")
 ext.DO_BUILD_SDK_FOR_TEST = Boolean.parseBoolean(BUILD_SDK_FOR_TEST)
 
 // Specifies the location to point at SDK build when DO_BUILD_SDK_FOR_TEST set to false
@@ -740,7 +740,10 @@ if (!file(JAVADOC).exists()) throw new Exception("Missing or incorrect path to '
 def inStream = new java.io.BufferedReader(new java.io.InputStreamReader(new java.lang.ProcessBuilder(JAVA, "-version").start().getErrorStream()));
 try {
     if (inStream.readLine() != null) {
+		inStream.readLine();
         String v = inStream.readLine();
+		System.out.println("ruiamzn test. v:" + v);
+
         if (v != null) {
             int ib = v.indexOf(" (build ");
             if (ib != -1) {
@@ -1753,6 +1756,9 @@ project(":jmx") {
 project(":systemTests") {
     test {
         enabled = IS_FULL_TEST
+
+        // we don't care about media and web
+        exclude("**/javafx/scene/web/*.*");
         if (!IS_USE_ROBOT) {
             // Disable all robot-based visual tests
             exclude("test/robot/**");

@@ -164,7 +164,7 @@ public class HTMLEditorTest {
      * @bug 8200418
      * Summary Check Style property after removeformat
      */
-    @Test
+    // @Test commented out for containing web test
     public void checkStyleProperty() throws Exception {
         final CountDownLatch editorStateLatch = new CountDownLatch(2);
         final AtomicBoolean result = new AtomicBoolean(false);

@@ -164,7 +164,7 @@ public class NullCCLTest {
         });
     }
 
-    @Test
+    // @Test Commented out for not using webkit
     public void testHTMLEditor() {
         doTest(() -> {
             HTMLEditor htmlEditor = new HTMLEditor();
@@ -173,7 +173,7 @@ public class NullCCLTest {
         });
     }
 
-    @Test
+    // @Test Commented out for not using webkit
     public void testWebView() throws Exception {
         final String HTML_FILE_NAME = "test.html";
 

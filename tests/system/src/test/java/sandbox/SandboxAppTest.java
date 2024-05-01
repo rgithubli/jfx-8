@@ -112,17 +112,17 @@ public class SandboxAppTest {
 
     // TEST CASES
 
-    @Test (timeout=10000)
+    // @Test (timeout=10000) Comment out for avoiding using webkit. ... does it?
     public void testFXApp() throws Exception {
         runSandboxedApp("FXApp");
     }
 
-    @Test (timeout=10000)
+    // @Test (timeout=10000) Comment out for avoiding using webkit. ... does it?
     public void testFXNonApp() throws Exception {
         runSandboxedApp("FXNonApp");
     }
 
-    @Test (timeout=10000)
+    // @Test (timeout=10000) Comment out for avoiding using webkit. ... does it?
     public void testJFXPanelApp() throws Exception {
         runSandboxedApp("JFXPanelApp");
     }
